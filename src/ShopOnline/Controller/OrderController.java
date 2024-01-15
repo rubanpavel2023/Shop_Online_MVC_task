@@ -1,6 +1,7 @@
 package ShopOnline.Controller;
 
 import ShopOnline.Model.Order;
+import ShopOnline.Utils.Rounder;
 
 public class OrderController {
     private Order order;
@@ -9,7 +10,8 @@ public class OrderController {
         this.order = order;
     }
 
-    public double getOrder() {
-        return order.calculatePriceOrder();
+    public String getOrder() {
+        double cost = order.calculatePriceOrder();
+        return Rounder.roundValue(cost);
     }
 }
