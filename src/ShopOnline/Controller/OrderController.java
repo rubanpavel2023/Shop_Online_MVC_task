@@ -2,7 +2,6 @@ package ShopOnline.Controller;
 
 import ShopOnline.Entity.Buyer;
 import ShopOnline.Entity.Purchase;
-
 import ShopOnline.Model.DeliveryOrderModel;
 import ShopOnline.Model.PickupOrderModel;
 import ShopOnline.Utils.Rounder;
@@ -14,11 +13,11 @@ public class OrderController {
 
 
     public void getPayment() {
-        String [] data = view.getData();
+        String[] data = view.getData();
         Buyer buyer = getBuyer(data);
         Purchase purchase = getPurchase(data);
         String output;
-        if (purchase.getQuota() <= 2) {
+        if (purchase.getQuota() >= 30) {
             PickupOrderModel model = new PickupOrderModel();
             String payment = Rounder.roundValue(model.calculatePriceOrder(purchase));
             output = "\nBuyer: " + buyer.getName() + ", " + buyer.getTel() +
@@ -34,15 +33,11 @@ public class OrderController {
 
     }
 
-
-
-
-
-    public Buyer getBuyer(String [] data) {
-        return new Buyer(data[0], data[1]) ;
+    public Buyer getBuyer(String[] data) {
+        return new Buyer(data[0], data[1]);
     }
 
-    public Purchase getPurchase (String [] data){
+    public Purchase getPurchase(String[] data) {
         return new Purchase(Integer.parseInt(data[2]),
                 Double.parseDouble(data[3]));
 
