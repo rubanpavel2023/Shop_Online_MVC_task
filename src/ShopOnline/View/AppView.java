@@ -19,11 +19,9 @@ public class AppView {
         return new String[]{name, phone, quantity, price};
     }
 
-    public void getOutput (String output){
+    public void getOutput(String output) {
         System.out.println(output);
     }
-
-
 
 
 }
